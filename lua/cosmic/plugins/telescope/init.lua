@@ -21,8 +21,8 @@ local opts_cursor = {
   layout_strategy = 'cursor',
   results_title = false,
   layout_config = {
-    width = 0.5,
-    height = 0.4,
+    width = 0.9,
+    height = 0.9,
   },
 }
 
@@ -32,8 +32,8 @@ local opts_vertical = {
   layout_strategy = 'vertical',
   results_title = false,
   layout_config = {
-    width = 0.3,
-    height = 0.5,
+    width = 0.9,
+    height = 0.9,
     prompt_position = 'top',
     mirror = true,
   },
@@ -43,8 +43,8 @@ local opts_flex = {
   layout_strategy = 'flex',
   results_title = false,
   layout_config = {
-    width = 0.7,
-    height = 0.7,
+    width = 0.9,
+    height = 0.9,
   },
 }
 

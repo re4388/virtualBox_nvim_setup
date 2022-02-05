@@ -2,6 +2,23 @@ local config = require('cosmic.config')
 local utils = require('cosmic.utils')
 
 require('Comment').setup(utils.merge({
+     ---LHS of toggle mappings in NORMAL + VISUAL mode
+    ---@type table
+    toggler = {
+        ---Line-comment toggle keymap
+        line = 'ss',
+        ---Block-comment toggle keymap
+        block = 'gbc',
+    },
+
+    ---LHS of operator-pending mappings in NORMAL + VISUAL mode
+    ---@type table
+    opleader = {
+        ---Line-comment keymap
+        line = 's',
+        ---Block-comment keymap
+        block = 'gb',
+    },
   pre_hook = function(ctx)
     local U = require('Comment.utils')
     local location = nil

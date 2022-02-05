@@ -25,6 +25,7 @@ g.nvim_tree_icons = {
 
 g.nvim_tree_respect_buf_cwd = 1
 
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 -- set up args
 local args = {
   auto_close = true,
@@ -40,9 +41,22 @@ local args = {
     enable = true,
   },
   view = {
-    width = 35,
-    number = true,
-    relativenumber = true,
+    width = 30,
+    height = 30,
+    hide_root_folder = false,
+    side = 'left',
+    auto_resize = false,
+    mappings = {
+      custom_only = false,
+      list = {
+        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+        { key = "h", cb = tree_cb "close_node" },
+        { key = "v", cb = tree_cb "vsplit" },
+      },
+    },
+    number = false,
+    relativenumber = false,
+    signcolumn = "yes"
   },
   git = {
     ignore = true,

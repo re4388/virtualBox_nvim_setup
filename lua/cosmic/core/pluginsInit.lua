@@ -23,6 +23,20 @@ return packer.startup(function()
     'lewis6991/impatient.nvim',
     'nathom/filetype.nvim',
     'nvim-lua/plenary.nvim',
+     -- my newly added
+    'andymass/vim-matchup',
+    'Julian/vim-textobj-variable-segment',
+    'kana/vim-textobj-entire',
+    'haya14busa/vim-textobj-function-syntax',
+    'kana/vim-textobj-line',
+    'michaeljsmith/vim-indent-object',
+    'wellle/targets.vim',
+    'kana/vim-textobj-user',
+    'kana/vim-textobj-function',
+    'vim-scripts/ReplaceWithRegister',
+    'tpope/vim-surround',
+    'tpope/vim-repeat',
+    'AndrewRadev/switch.vim'
   })
 
   -- initialize theme plugins
@@ -250,6 +264,33 @@ return packer.startup(function()
     end,
     disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'colorizer'),
   })
+
+
+  use {
+  'abecodes/tabout.nvim',
+  config = function()
+    require('tabout').setup {
+    tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
+    -- backwards_tabkey = '<S-Tab>', -- key to trigger backwards tabout, set to an empty string to disable
+    act_as_tab = true, -- shift content if tab out is not possible
+    act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+    enable_backwards = true, -- well ...
+    completion = true, -- if the tabkey is used in a completion pum
+    tabouts = {
+      {open = "'", close = "'"},
+      {open = '"', close = '"'},
+      {open = '`', close = '`'},
+      {open = '(', close = ')'},
+      {open = '[', close = ']'},
+      {open = '{', close = '}'}
+    },
+    ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+    exclude = {} -- tabout will ignore these filetypes
+}
+  end,
+	wants = {'nvim-treesitter'}, -- or require if not used so far
+	after = {'completion-nvim'} -- if a completion plugin is using tabs load it before
+ }
 
   if user_config.add_plugins and not vim.tbl_isempty(user_config.add_plugins) then
     for _, plugin in pairs(user_config.add_plugins) do
